@@ -2,10 +2,10 @@
 
 import fibonacci from "./fib";
 
-export default (req, res) => {
+export default (req: { params: { num: string } }, res: { send: (result: string) => void }) => {
   const { num } = req.params;
 
-  const fibN = fibonacci(parseInt(num));
+  const fibN = fibonacci(parseInt(num, 10)); // Parse as base 10
   let result = `fibonacci(${num}) is ${fibN}`;
 
   if (fibN < 0) {
